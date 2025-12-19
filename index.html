@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Transform your health with expert coaching and comprehensive online courses. Book one-to-one consultations with certified health coaches.">
+    <title>HealthCoach Pro - Transform Your Health Journey</title>
+
+    <!-- Flatpickr Calendar CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">HealthCoach Pro</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#booking">Book Consultation</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#booking" class="btn btn-primary">Get Started</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero section" id="home">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform Your Health Journey</h1>
+                <p>Expert-led online courses and personalized one-to-one coaching to help you achieve your wellness
+                    goals</p>
+                <div class="hero-buttons">
+                    <a href="#courses" class="btn btn-primary">Explore Courses</a>
+                    <a href="#booking" class="btn btn-secondary">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses section" id="courses">
+        <div class="container">
+            <div class="courses-header reveal">
+                <h2>Our <span class="text-gradient">Premium Courses</span></h2>
+                <p>Comprehensive programs designed by certified health professionals</p>
+            </div>
+
+            <div class="courses-filter reveal">
+                <button class="filter-btn active" data-category="all">All Courses</button>
+                <button class="filter-btn" data-category="nutrition">Nutrition</button>
+                <button class="filter-btn" data-category="fitness">Fitness</button>
+                <button class="filter-btn" data-category="wellness">Wellness</button>
+                <button class="filter-btn" data-category="mindfulness">Mindfulness</button>
+            </div>
+
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Course 1 -->
+                <div class="course-card reveal" data-category="nutrition">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&h=400&fit=crop"
+                        alt="Nutrition Mastery Course" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Nutrition</span>
+                        <h3 class="course-title">Complete Nutrition Mastery</h3>
+                        <p class="course-description">Master the fundamentals of nutrition science and learn to create
+                            personalized meal plans for optimal health.</p>
+                        <div class="course-meta">
+                            <span class="course-price">$199</span>
+                            <span class="course-duration">8 weeks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card reveal" data-category="fitness">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=400&fit=crop"
+                        alt="Fitness Transformation Course" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Fitness</span>
+                        <h3 class="course-title">Fitness Transformation Program</h3>
+                        <p class="course-description">Build strength, endurance, and flexibility with our comprehensive
+                            fitness training program.</p>
+                        <div class="course-meta">
+                            <span class="course-price">$249</span>
+                            <span class="course-duration">12 weeks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card reveal" data-category="wellness">
+                    <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&h=400&fit=crop"
+                        alt="Holistic Wellness Course" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Wellness</span>
+                        <h3 class="course-title">Holistic Wellness Blueprint</h3>
+                        <p class="course-description">Integrate mind, body, and spirit for complete wellness
+                            transformation and lasting vitality.</p>
+                        <div class="course-meta">
+                            <span class="course-price">$299</span>
+                            <span class="course-duration">10 weeks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="course-card reveal" data-category="mindfulness">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=400&fit=crop"
+                        alt="Mindfulness & Meditation Course" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Mindfulness</span>
+                        <h3 class="course-title">Mindfulness & Meditation</h3>
+                        <p class="course-description">Reduce stress, improve focus, and cultivate inner peace through
+                            proven mindfulness techniques.</p>
+                        <div class="course-meta">
+                            <span class="course-price">$149</span>
+                            <span class="course-duration">6 weeks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 5 -->
+                <div class="course-card reveal" data-category="nutrition">
+                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&h=400&fit=crop"
+                        alt="Weight Management Course" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Nutrition</span>
+                        <h3 class="course-title">Sustainable Weight Management</h3>
+                        <p class="course-description">Achieve and maintain your ideal weight with science-backed
+                            strategies and personalized guidance.</p>
+                        <div class="course-meta">
+                            <span class="course-price">$229</span>
+                            <span class="course-duration">10 weeks</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 6 -->
+                <div class="course-card reveal" data-category="fitness">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=400&fit=crop"
+                        alt="Yoga & Flexibility Course" class="course-image">
+                    <div class="course-content">
+                        <span class="course-category">Fitness</span>
+                        <h3 class="course-title">Yoga & Flexibility Mastery</h3>
+                        <p class="course-description">Enhance flexibility, balance, and strength through comprehensive
+                            yoga practice and theory.</p>
+                        <div class="course-meta">
+                            <span class="course-price">$179</span>
+                            <span class="course-duration">8 weeks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section section" id="booking">
+        <div class="container">
+            <div class="booking-container">
+                <div class="booking-info reveal">
+                    <h2>Book Your <span class="text-gradient">Personal Consultation</span></h2>
+                    <p>Get personalized guidance from our certified health coaches in a one-to-one session tailored to
+                        your unique needs.</p>
+
+                    <ul class="booking-features">
+                        <li>60-minute personalized consultation</li>
+                        <li>Customized health assessment</li>
+                        <li>Personalized action plan</li>
+                        <li>Follow-up support via email</li>
+                        <li>Access to exclusive resources</li>
+                        <li>Flexible scheduling options</li>
+                    </ul>
+                </div>
+
+                <div class="booking-form reveal" id="bookingFormContainer">
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="form-error">Please enter your full name</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="form-error">Please enter a valid email address</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                            <span class="form-error">Please enter a valid phone number</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Consultation Type *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="nutrition">Nutrition Consultation</option>
+                                <option value="fitness">Fitness Consultation</option>
+                                <option value="wellness">Holistic Wellness</option>
+                                <option value="weight">Weight Management</option>
+                                <option value="general">General Health Coaching</option>
+                            </select>
+                            <span class="form-error">Please select a consultation type</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Preferred Date *</label>
+                            <input type="date" id="date" name="date" required>
+                            <span class="form-error">Please select a date</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Preferred Time *</label>
+                            <select id="time" name="time" required>
+                                <option value="">Select a time</option>
+                                <option value="09:00">9:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                                <option value="17:00">5:00 PM</option>
+                            </select>
+                            <span class="form-error">Please select a time</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Tell us about your goals (Optional)</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Book Consultation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="text-center reveal">
+                <h2>Why Choose <span class="text-gradient">HealthCoach Pro</span></h2>
+                <p style="max-width: 700px; margin: 0 auto var(--spacing-3xl);">We're committed to helping you achieve
+                    lasting health transformation through evidence-based coaching and comprehensive education.</p>
+            </div>
+
+            <div class="courses-grid">
+                <div class="card reveal">
+                    <h3>🎓 Expert Coaches</h3>
+                    <p>All our coaches are certified professionals with years of experience in health and wellness.</p>
+                </div>
+
+                <div class="card reveal">
+                    <h3>📊 Proven Results</h3>
+                    <p>Our programs have helped thousands of clients achieve their health goals and maintain lasting
+                        change.</p>
+                </div>
+
+                <div class="card reveal">
+                    <h3>🎯 Personalized Approach</h3>
+                    <p>Every program and consultation is tailored to your unique needs, goals, and lifestyle.</p>
+                </div>
+
+                <div class="card reveal">
+                    <h3>💪 Comprehensive Support</h3>
+                    <p>Get ongoing support, resources, and guidance throughout your entire health journey.</p>
+                </div>
+
+                <div class="card reveal">
+                    <h3>🔬 Science-Backed</h3>
+                    <p>All our methods are based on the latest research in nutrition, fitness, and wellness science.</p>
+                </div>
+
+                <div class="card reveal">
+                    <h3>⚡ Flexible Learning</h3>
+                    <p>Access courses and consultations on your schedule, from anywhere in the world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="text-gradient">HealthCoach Pro</h3>
+                    <p>Empowering individuals to achieve optimal health through expert coaching and comprehensive
+                        education.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                        <a href="#" aria-label="LinkedIn">💼</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#courses">Our Courses</a>
+                    <a href="#booking">Book Consultation</a>
+                    <a href="#about">About Us</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Success Stories</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <a href="#">Free Health Guide</a>
+                    <a href="#">Nutrition Calculator</a>
+                    <a href="#">Workout Plans</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Support</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>📧 info@healthcoachpro.com</p>
+                    <p>📱 +1 (555) 123-4567</p>
+                    <p>📍 123 Wellness Street<br>Health City, HC 12345</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 HealthCoach Pro. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Flatpickr Calendar JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
