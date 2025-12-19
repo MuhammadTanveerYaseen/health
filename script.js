@@ -3,42 +3,42 @@
 // ========================================
 
 // Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     // ========================================
     // NAVIGATION
     // ========================================
-    
+
     const navbar = document.getElementById('navbar');
     const mobileMenuToggle = document.getElementById('mobileMenuToggle');
     const navLinks = document.getElementById('navLinks');
-    
+
     // Navbar scroll effect
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
     });
-    
+
     // Mobile menu toggle
-    mobileMenuToggle.addEventListener('click', function() {
+    mobileMenuToggle.addEventListener('click', function () {
         navLinks.classList.toggle('active');
         this.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
     });
-    
+
     // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
             navLinks.classList.remove('active');
             mobileMenuToggle.textContent = '☰';
         });
     });
-    
+
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -51,27 +51,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // ========================================
     // COURSE FILTERING
     // ========================================
-    
+
     const filterButtons = document.querySelectorAll('.filter-btn');
     const courseCards = document.querySelectorAll('.course-card');
-    
+
     filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             // Remove active class from all buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
             // Add active class to clicked button
             this.classList.add('active');
-            
+
             const category = this.getAttribute('data-category');
-            
+
             // Filter courses with animation
             courseCards.forEach((card, index) => {
                 const cardCategory = card.getAttribute('data-category');
-                
+
                 if (category === 'all' || cardCategory === category) {
                     // Show card with delay for stagger effect
                     setTimeout(() => {
@@ -92,44 +92,69 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-    
+
     // ========================================
     // BOOKING FORM VALIDATION
     // ========================================
-    
+
     const bookingForm = document.getElementById('bookingForm');
-    
-    // Set minimum date to today
+
+    // Initialize Flatpickr Calendar for Date
     const dateInput = document.getElementById('date');
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.setAttribute('min', today);
-    
+    const datePicker = flatpickr(dateInput, {
+        minDate: 'today',
+        maxDate: new Date().fp_incr(90), // 90 days from today
+        dateFormat: 'Y-m-d',
+        disableMobile: false,
+        theme: 'dark',
+        onChange: function (selectedDates, dateStr, instance) {
+            validateField(dateInput);
+        }
+    });
+
+    // Initialize Flatpickr for Time (alternative time picker)
+    const timeInput = document.getElementById('time');
+    const timePicker = flatpickr(timeInput, {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: 'H:i',
+        time_24hr: false,
+        minTime: '09:00',
+        maxTime: '17:00',
+        minuteIncrement: 30,
+        theme: 'dark',
+        onChange: function (selectedDates, timeStr, instance) {
+            validateField(timeInput);
+        }
+    });
+
+
     // Real-time validation
     const formInputs = bookingForm.querySelectorAll('input, select, textarea');
-    
+
     formInputs.forEach(input => {
-        input.addEventListener('blur', function() {
+        input.addEventListener('blur', function () {
             validateField(this);
         });
-        
-        input.addEventListener('input', function() {
+
+        input.addEventListener('input', function () {
             if (this.parentElement.classList.contains('error')) {
                 validateField(this);
             }
         });
     });
-    
+
     // Validate individual field
     function validateField(field) {
         const formGroup = field.parentElement;
         formGroup.classList.remove('error');
-        
+
         // Check if field is required and empty
         if (field.hasAttribute('required') && !field.value.trim()) {
             formGroup.classList.add('error');
             return false;
         }
-        
+
         // Email validation
         if (field.type === 'email') {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -138,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return false;
             }
         }
-        
+
         // Phone validation (basic)
         if (field.type === 'tel') {
             const phoneRegex = /^[\d\s\-\+\(\)]+$/;
@@ -147,34 +172,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 return false;
             }
         }
-        
+
         return true;
     }
-    
+
     // Form submission
-    bookingForm.addEventListener('submit', function(e) {
+    bookingForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
+
         let isValid = true;
-        
+
         // Validate all fields
         formInputs.forEach(input => {
             if (!validateField(input)) {
                 isValid = false;
             }
         });
-        
+
         if (isValid) {
             // Get form data
             const formData = new FormData(bookingForm);
             const data = Object.fromEntries(formData);
-            
+
             // Show success message
             showSuccessMessage(data);
-            
+
             // Reset form
             bookingForm.reset();
-            
+
             // In production, you would send this data to your backend
             console.log('Booking submitted:', data);
         } else {
@@ -185,11 +210,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
-    
+
     // Show success message
     function showSuccessMessage(data) {
         const formContainer = document.getElementById('bookingFormContainer');
-        
+
         // Create success message
         const successHTML = `
             <div class="booking-form" style="text-align: center; animation: fadeInUp 0.6s ease-out;">
@@ -208,11 +233,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <button class="btn btn-primary" onclick="location.reload()">Book Another Consultation</button>
             </div>
         `;
-        
+
         formContainer.innerHTML = successHTML;
         formContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
-    
+
     // Helper function to get service name
     function getServiceName(value) {
         const services = {
@@ -224,24 +249,24 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         return services[value] || value;
     }
-    
+
     // Helper function to format date
     function formatDate(dateString) {
         const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
+        return date.toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
         });
     }
-    
+
     // ========================================
     // SCROLL REVEAL ANIMATIONS
     // ========================================
-    
+
     const revealElements = document.querySelectorAll('.reveal');
-    
+
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -253,29 +278,29 @@ document.addEventListener('DOMContentLoaded', function() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
-    
+
     revealElements.forEach(element => {
         revealObserver.observe(element);
     });
-    
+
     // ========================================
     // COURSE CARD INTERACTIONS
     // ========================================
-    
+
     courseCards.forEach(card => {
-        card.addEventListener('click', function() {
+        card.addEventListener('click', function () {
             // Get course details
             const title = this.querySelector('.course-title').textContent;
             const category = this.querySelector('.course-category').textContent;
             const price = this.querySelector('.course-price').textContent;
             const duration = this.querySelector('.course-duration').textContent;
             const description = this.querySelector('.course-description').textContent;
-            
+
             // Show course details modal (simplified version)
             showCourseModal(title, category, price, duration, description);
         });
     });
-    
+
     // Show course modal
     function showCourseModal(title, category, price, duration, description) {
         // Create modal overlay
@@ -295,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
             padding: var(--spacing-xl);
             animation: fadeIn 0.3s ease-out;
         `;
-        
+
         modal.innerHTML = `
             <div class="card" style="max-width: 600px; width: 100%; animation: fadeInUp 0.4s ease-out;">
                 <span class="course-category" style="display: inline-block; margin-bottom: var(--spacing-md);">${category}</span>
@@ -317,29 +342,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `;
-        
+
         document.body.appendChild(modal);
-        
+
         // Close modal
         const closeModal = () => {
             modal.style.animation = 'fadeOut 0.3s ease-out';
             setTimeout(() => modal.remove(), 300);
         };
-        
-        modal.addEventListener('click', function(e) {
+
+        modal.addEventListener('click', function (e) {
             if (e.target === modal) closeModal();
         });
-        
+
         document.getElementById('closeModal').addEventListener('click', closeModal);
     }
-    
+
     // ========================================
     // PERFORMANCE OPTIMIZATION
     // ========================================
-    
+
     // Lazy load course images
     const courseImages = document.querySelectorAll('.course-image');
-    
+
     const imageObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -349,15 +374,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     courseImages.forEach(img => {
         imageObserver.observe(img);
     });
-    
+
     // ========================================
     // INITIALIZE
     // ========================================
-    
+
     console.log('HealthCoach Pro - Website initialized successfully! 🚀');
 });
 

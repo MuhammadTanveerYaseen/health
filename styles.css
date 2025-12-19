@@ -14,28 +14,28 @@
   --color-bg-primary: #0a0e27;
   --color-bg-secondary: #151932;
   --color-bg-tertiary: #1e2442;
-  
+
   --color-accent-primary: #00d4ff;
   --color-accent-secondary: #00ffc6;
   --color-accent-gradient: linear-gradient(135deg, #00d4ff 0%, #00ffc6 100%);
-  
+
   --color-text-primary: #ffffff;
   --color-text-secondary: #b8c5d6;
   --color-text-muted: #7a8ba3;
-  
+
   --color-success: #00ffc6;
   --color-warning: #ffd700;
   --color-error: #ff4757;
-  
+
   /* Glassmorphism */
   --glass-bg: rgba(30, 36, 66, 0.7);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  
+
   /* Typography */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  
+
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -46,7 +46,7 @@
   --font-size-4xl: 2.5rem;
   --font-size-5xl: 3rem;
   --font-size-6xl: 4rem;
-  
+
   /* Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 0.75rem;
@@ -56,19 +56,19 @@
   --spacing-2xl: 3rem;
   --spacing-3xl: 4rem;
   --spacing-4xl: 6rem;
-  
+
   /* Border Radius */
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
   --radius-xl: 2rem;
   --radius-full: 9999px;
-  
+
   /* Transitions */
   --transition-fast: 150ms ease-in-out;
   --transition-base: 300ms ease-in-out;
   --transition-slow: 500ms ease-in-out;
-  
+
   /* Shadows */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
@@ -109,7 +109,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
+  background:
     radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 80%, rgba(0, 255, 198, 0.1) 0%, transparent 50%);
   z-index: -1;
@@ -117,15 +117,27 @@ body::before {
 }
 
 @keyframes backgroundPulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.8; }
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
 }
 
 /* ========================================
    TYPOGRAPHY
    ======================================== */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
@@ -406,6 +418,7 @@ a:hover {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -467,9 +480,12 @@ a:hover {
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg);
   }
+
   50% {
     transform: translateY(-30px) rotate(180deg);
   }
@@ -785,11 +801,11 @@ a:hover {
     --font-size-5xl: 2.5rem;
     --font-size-4xl: 2rem;
   }
-  
+
   .booking-container {
     grid-template-columns: 1fr;
   }
-  
+
   .nav-links {
     position: fixed;
     top: 0;
@@ -802,11 +818,11 @@ a:hover {
     transition: right var(--transition-base);
     box-shadow: var(--shadow-xl);
   }
-  
+
   .nav-links.active {
     right: 0;
   }
-  
+
   .mobile-menu-toggle {
     display: block;
   }
@@ -817,19 +833,19 @@ a:hover {
     --font-size-6xl: 2.5rem;
     --font-size-5xl: 2rem;
   }
-  
+
   .container {
     padding: 0 var(--spacing-md);
   }
-  
+
   .hero-buttons {
     flex-direction: column;
   }
-  
+
   .courses-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .footer-content {
     grid-template-columns: 1fr;
   }
@@ -886,4 +902,134 @@ a:hover {
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ========================================
+   FLATPICKR CALENDAR CUSTOMIZATION
+   ======================================== */
+
+/* Override Flatpickr dark theme to match our design */
+.flatpickr-calendar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+.flatpickr-months {
+  background: transparent !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.flatpickr-current-month {
+  color: var(--color-text-primary) !important;
+}
+
+.flatpickr-monthDropdown-months,
+.numInputWrapper input {
+  background: var(--color-bg-tertiary) !important;
+  color: var(--color-text-primary) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.flatpickr-weekdays {
+  background: transparent !important;
+}
+
+.flatpickr-weekday {
+  color: var(--color-text-secondary) !important;
+  font-weight: 600 !important;
+}
+
+.flatpickr-day {
+  color: var(--color-text-primary) !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.flatpickr-day:hover {
+  background: var(--color-bg-tertiary) !important;
+  border-color: var(--color-accent-primary) !important;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover {
+  background: var(--color-accent-gradient) !important;
+  color: var(--color-bg-primary) !important;
+  font-weight: 700 !important;
+  box-shadow: var(--shadow-glow) !important;
+}
+
+.flatpickr-day.today {
+  border: 2px solid var(--color-accent-primary) !important;
+  background: transparent !important;
+}
+
+.flatpickr-day.today:hover {
+  background: var(--color-bg-tertiary) !important;
+}
+
+.flatpickr-day.disabled {
+  color: var(--color-text-muted) !important;
+  opacity: 0.3 !important;
+}
+
+.flatpickr-time {
+  background: var(--color-bg-tertiary) !important;
+  border-top: 1px solid var(--glass-border) !important;
+}
+
+.flatpickr-time input {
+  background: transparent !important;
+  color: var(--color-text-primary) !important;
+  font-weight: 600 !important;
+}
+
+.flatpickr-am-pm {
+  background: var(--color-accent-gradient) !important;
+  color: var(--color-bg-primary) !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+.flatpickr-prev-month,
+.flatpickr-next-month {
+  color: var(--color-text-primary) !important;
+  fill: var(--color-text-primary) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.flatpickr-prev-month:hover,
+.flatpickr-next-month:hover {
+  color: var(--color-accent-primary) !important;
+  fill: var(--color-accent-primary) !important;
+}
+
+.flatpickr-prev-month:hover svg,
+.flatpickr-next-month:hover svg {
+  fill: var(--color-accent-primary) !important;
+}
+
+/* Time picker specific styles */
+.flatpickr-time .numInputWrapper {
+  background: var(--color-bg-tertiary) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+.flatpickr-time .numInputWrapper:hover {
+  background: var(--color-bg-primary) !important;
+}
+
+.flatpickr-time .arrowUp,
+.flatpickr-time .arrowDown {
+  border: none !important;
+}
+
+.flatpickr-time .arrowUp:after,
+.flatpickr-time .arrowDown:after {
+  border-bottom-color: var(--color-accent-primary) !important;
+  border-top-color: var(--color-accent-primary) !important;
 }
